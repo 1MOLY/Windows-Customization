@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Windows Customization
 
 ## Tools
@@ -8,3 +9,7 @@
 
 ## Font
 JetBrainsMono Nerd Font Propo (Nerd Fonts)
+=======
+# Windows-Customization
+My personal settings for 3rd party apps on Windows 11 .
+>>>>>>> 6c2397a916043f4ef74b629dd2d24972f9a1e566
