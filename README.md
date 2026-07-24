@@ -1,4 +1,5 @@
 # Windows Customization
+My personal settings for 3rd party apps on Windows 11 .
 
 ## Tools
 - YASB (Statusbar) -> Configs at %USERPROFILE%\.config\yasb\
@@ -8,7 +9,3 @@
 
 ## Font
 JetBrainsMono Nerd Font Propo (Nerd Fonts)
-
-# Windows-Customization
-My personal settings for 3rd party apps on Windows 11 .
-
