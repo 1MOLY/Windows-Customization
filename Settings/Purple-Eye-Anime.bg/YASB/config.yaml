@@ -1,0 +1,260 @@
+# GlazeWM | Catppuccin Mocha | Glazing Mocha
+# Place this file at: C:/users/{username}/.config/yasb/config.yaml 
+# You need to Replace {username} with your username and insert your wallpaper path at line 76. also provide the info at line 305 to use the ai chat.
+watch_stylesheet: true
+watch_config: true
+debug: false
+update_check: true
+show_systray: true
+bars:
+  yasb-bar:
+    screens: ['primary']
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      align: "center"
+    blur_effect:
+      enabled: true
+      dark_mode: true
+      round_corners: true
+      border_color: "None"
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+      hide_on_fullscreen: true
+    dimensions:
+      width: "100%"
+      height: 36
+    padding:
+      top: 3
+      left: 6
+      bottom: 3
+      right: 6
+    animation:
+      enabled: true
+      duration: 250
+    widgets:
+      left:
+        - "power_menu"
+      center:
+        - "cpu"
+        - "gpu"
+        - "memory"
+        - "disk"
+      right:
+        - "systray" 
+        - "bluetooth"
+        - "volume"
+        - "notifications"
+widgets:
+  notifications:
+    type: "yasb.notifications.NotificationsWidget"
+    options:
+      label: "<span>\udb80\udc9e</span> {count}"
+      label_alt: "{count} notifications"
+      hide_empty: true
+      tooltip: true
+      icons:
+        new: "\udb80\udc9e"
+        default: "\udb80\udc9a"
+      callbacks:
+        on_left: "toggle_notification"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+  cpu:
+    type: "yasb.cpu.CpuWidget"
+    options:
+      label: "<span>\uf4bc</span> {info[percent][total]}%"
+      label_alt: "<span>\uf437</span> {info[freq][current]} MHz"
+      update_interval: 2000
+      cpu_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      histogram_icons:
+        - "\u2581"
+        - "\u2581"
+        - "\u2582"
+        - "\u2583"
+        - "\u2584"
+        - "\u2585"
+        - "\u2586"
+        - "\u2587"
+        - "\u2588"
+      histogram_num_columns: 8
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "exec cmd /c Taskmgr"
+      menu:
+        enabled: true
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "None"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        show_graph: true
+        show_graph_grid: false
+        graph_history_size: 60
+  memory:
+    type: "yasb.memory.MemoryWidget"
+    options:
+      label: "<span>\uefc5</span> {virtual_mem_percent}%"
+      label_alt: "<span>\uefc5</span> {virtual_mem_used}/{virtual_mem_total}"
+      update_interval: 3000
+      memory_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+      menu:
+        enabled: true
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "None"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        show_graph: true
+        show_graph_grid: false
+        graph_history_size: 60
+  disk:
+    type: "yasb.disk.DiskWidget"
+    options:
+      label: "<span>\uf473</span> {space[used][percent]}"
+      label_alt: "<span>\uf473</span> {space[used][gb]} / {space[total][gb]}"
+      volume_label: "C"
+      update_interval: 600
+      disk_thresholds:
+        low: 50
+        medium: 75
+        high: 90
+      group_label:
+        volume_labels: ["C"]
+        show_label_name: true
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "None"
+        alignment: "right"
+        direction: "down"
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+  gpu:
+    type: "yasb.gpu.GpuWidget"
+    options:
+      label: "<span>\udb81\udd03</span> {info[utilization]}%"
+      label_alt: "<span>\udb81\udd03</span> {info[temp]}°C | {info[mem_used]}"
+      gpu_index: 0
+      update_interval: 2000
+      gpu_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+      menu:
+        enabled: true
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "None"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        show_graph: true
+        show_graph_grid: false
+        graph_history_size: 60
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "Vol {volume}"
+      icons:
+        - "\ueee8"
+        - "\uf026"
+        - "\uf027"
+        - "\uf027"
+        - "\uf028"
+      scroll_step: 2
+      slider_beep: false
+      tooltip: true
+      audio_menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "None"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        show_apps: true
+        show_app_labels: false
+        show_app_icons: true
+        show_apps_expanded: false
+      callbacks:
+        on_left: "toggle_volume_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_mute"
+  bluetooth:
+    type: "yasb.bluetooth.BluetoothWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "{device_name}"
+      label_no_device: "No devices"
+      label_device_separator: ", "
+      tooltip: true
+      icons:
+        bluetooth_on: "\udb80\udcaf"
+        bluetooth_off: "\udb80\udcb2"
+        bluetooth_connected: "\udb80\udcb1"
+      callbacks:
+        on_left: "toggle_label"
+        on_right: "exec cmd.exe /c start ms-settings:bluetooth"
+        on_middle: "do_nothing"
+  systray:
+    type: "yasb.systray.SystrayWidget"
+    options:
+      class_name: "systray"
+      label_collapsed: "\udb81\udfc3"
+      label_expanded: "\udb81\udf98"
+      label_position: "left"
+      icon_size: 16
+      pin_click_modifier: "alt"
+      show_unpinned: true
+      show_unpinned_button: true
+      show_battery: false
+      show_volume: false
+      show_network: true
+      tooltip: true   
+  power_menu:
+    type: "yasb.power_menu.PowerMenuWidget"
+    options:
+      label: "<span>\uf011</span>"
+      uptime: true
+      show_user: true
+      blur: false
+      blur_background: true
+      animation_duration: 120
+      button_row: 3
+      profile_image_size: 80
+      buttons:
+        lock: ["\uea75", "Lock"]
+        sleep: ["\u23fe", "Sleep"]
+        restart: ["\uead2", "Restart"]
+        shutdown: ["\uf011", "Shut Down"]
+        signout: ["\udb80\udf43", "Sign out"]
+        cancel: ["\udb81\udf3a", "Cancel"]

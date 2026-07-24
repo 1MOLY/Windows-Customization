@@ -1,0 +1,11 @@
+{
+  "theme": "LiquidGlass",
+  "backgroundTranslucentEffect": "",
+  "backgroundTranslucentEffectRegion": "entireWindow",
+  "controlStyles[0].target": "",
+  "controlStyles[0].styles[0]": "",
+  "themeResourceVariables[0]": "",
+  "explorerFrameContainerHeight": 0,
+  "xamlDiagnosticsHandling": "alert",
+  "styleConstants[0]": ""
+}

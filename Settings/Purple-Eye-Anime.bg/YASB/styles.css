@@ -1,0 +1,321 @@
+/* ============================================================
+   YASB Theme — "Amethyst"
+   Basisfarbe: #583FA2 (Bar/Popups: #583FA23F transluzent)
+   Fonts: Segoe UI Variable für Text, JetBrainsMono NFP für Icons
+   ============================================================ */
+
+:root {
+  /* Kern */
+  --accent:        #583FA2;
+  --accent-glass:  #583FA23F;   /* Bar & Popup-Hintergrund */
+  --accent-soft:   #583FA226;   /* Hover / Selection */
+  --accent-strong: #7B5FD1;     /* hellere Akzent-Variante */
+  --accent-bright: #A78BFA;     /* Icons / Highlights */
+  --lavender:      #C4B5FD;     /* Borders / aktive Elemente */
+
+  /* Flächen (neutral-violett getönt) */
+  --surface0: #2E2942;
+  --surface1: #3B3555;
+  --surface2: #4A4368;
+  --overlay0: #6E679A;
+  --overlay1: #8B84B3;
+  --overlay2: #A9A3C9;
+
+  /* Text */
+  --text:     #E6E1F5;
+  --subtext1: #C9C3E0;
+  --subtext0: #ABA4C7;
+
+  /* Status */
+  --green:  #A6E3A1;
+  --yellow: #F9E2AF;
+  --peach:  #FAB387;
+  --red:    #F38BA8;
+
+  /* Rahmen */
+  --border:      #C4B5FD1F;
+  --border-soft: #C4B5FD12;
+}
+
+/* ---------- Basis ---------- */
+* {
+  font-size: 13px;
+  font-family: "Segoe UI Variable Display", "Segoe UI", sans-serif;
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.yasb-bar {
+  background-color: var(--accent-glass);
+  border-bottom: 1px solid var(--border-soft);
+  padding-top: 2px;
+}
+
+.container-left, .container-center, .container-right {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Widgets (Bar) ---------- */
+.widget {
+  padding: 0 6px;
+}
+.widget .widget-container {
+  border-radius: 8px;
+  padding: 2px 6px;
+}
+.widget .label {
+  padding: 0 3px;
+  font-weight: 500;
+}
+.widget .icon {
+  font-family: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 3px;
+  color: #FFFFFF;
+}
+
+/* ---------- Popups / Menüs (gemeinsame Basis) ---------- */
+.notes-menu, .todo-menu, .github-menu, .traffic-menu,
+.cpu-popup, .memory-popup, .gpu-popup, .pomodoro-menu, .audio-menu,
+.wifi-menu, .brightness-menu, .open-meteo-card {
+  background-color: #583FA22E;          /* transluzenter = glasiger */
+  border: 1px solid #FFFFFF2B;          /* heller Glas-Rand wie bei iOS */
+  border-radius: 16px;
+  padding: 10px 14px;                   /* mehr Luft seitlich */
+}
+
+/* ---------- Scrollbars ---------- */
+QScrollBar:vertical   { background-color: #00000033; width: 8px;  border-radius: 4px; margin: 2px; }
+QScrollBar:horizontal { background-color: #00000033; height: 8px; border-radius: 4px; margin: 2px; }
+QScrollBar::handle        { background-color: var(--surface2); border-radius: 4px; min-height: 24px; }
+QScrollBar::handle:hover  { background-color: var(--accent-strong); }
+QScrollBar::add-line, QScrollBar::sub-line { height: 0; width: 0; }
+QScrollBar::add-page, QScrollBar::sub-page { background: none; }
+
+/* ---------- Tooltip ---------- */
+.tooltip {
+  background-color: var(--surface0);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--subtext1);
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.notification-dot {
+  background-color: var(--red);
+  border-radius: 50%;
+  min-width: 6px; min-height: 6px;
+  max-width: 6px; max-height: 6px;
+}
+
+/* ---------- Kontextmenü ---------- */
+.context-menu {
+  background-color: var(--surface0);
+  border: 1px solid var(--border-soft);
+  padding: 6px 0;
+  font-size: 12px;
+  border-radius: 10px;
+}
+.context-menu::item {
+  background-color: transparent;
+  padding: 7px 14px;
+  margin: 2px 6px;
+  border-radius: 6px;
+  min-width: 110px;
+}
+.context-menu::item:selected { background-color: var(--surface1); }
+.context-menu::item:checked  { background-color: var(--accent-soft); color: var(--lavender); }
+.context-menu::item:pressed  { background-color: var(--surface2); }
+.context-menu::item:disabled { color: var(--overlay0); }
+.context-menu::separator {
+  height: 1px;
+  background-color: var(--surface1);
+  margin: 4px 8px;
+}
+
+/* ---------- GitHub ---------- */
+.github-widget .icon { font-size: 15px; color: var(--overlay2); }
+.github-widget .icon.new-notification { color: var(--red); }
+
+.github-menu {
+  max-height: 520px;
+  min-height: 480px;
+  min-width: 440px;
+  padding: 6px 0;                   /* Items gehen randlos, Header/Footer haben eigenes Padding */
+}
+.github-menu .header {
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 16px;
+}
+.github-menu .footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 8px 16px 10px;
+}
+.github-menu .footer .label { font-size: 11px; color: var(--overlay1); }
+.github-menu .contents .item {
+  min-height: 42px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #ffffff0a;
+}
+.github-menu .contents .item:hover { background-color: var(--accent-soft); }
+.github-menu .contents .item .title { font-size: 13px; font-weight: 600; color: var(--subtext1); }
+.github-menu .contents .item .description { font-size: 11px; color: var(--overlay1); margin-top: 2px; }
+.github-menu .contents .item.new .title,
+.github-menu .contents .item.new .description { color: var(--text); }
+.github-menu .contents .item .icon {
+  font-family: "JetBrainsMono NFP", monospace;
+  font-size: 15px;
+  padding: 0 8px 0 0;
+  color: var(--overlay1);
+}
+.github-menu .contents .item.new .icon { color: var(--green); }
+
+/* ---------- Traffic ---------- */
+.traffic-widget .label { font-size: 12px; color: var(--subtext0); font-weight: 500; }
+.traffic-widget .icon  { color: #FFFFFF; }
+
+.traffic-menu { min-width: 300px; padding: 12px 16px; }
+.traffic-menu .header .title { font-size: 15px; font-weight: 600; padding: 6px 8px 10px; }
+.traffic-menu .download-speed-value,
+.traffic-menu .upload-speed-value { font-size: 20px; font-weight: 800; color: var(--subtext1); }
+.traffic-menu .internet-info.connected    { background-color: #A6E3A11A; color: var(--green); border-radius: 6px; padding: 4px 8px; }
+.traffic-menu .internet-info.disconnected { background-color: #F38BA81A; color: var(--red);   border-radius: 6px; padding: 4px 8px; }
+.traffic-menu .data-text  { font-size: 12px; color: var(--overlay1); }
+.traffic-menu .data-value { font-size: 12px; font-weight: 600; }
+.traffic-menu .section-title { font-size: 11px; font-weight: 600; color: var(--overlay1); }
+
+/* ---------- System-Widgets ---------- */
+.cpu-widget .icon    { color: #FFFFFF; font-size: 13px; }
+.memory-widget .icon { color: #FFFFFF; font-size: 13px; }
+.disk-widget .icon   { color: #FFFFFF; font-size: 13px; }
+.gpu-widget .icon    { color: #FFFFFF; font-size: 13px; }
+
+.cpu-widget .label, .memory-widget .label,
+.disk-widget .label, .gpu-widget .label { font-weight: 500; }
+
+.cpu-widget .label.status-low,      .memory-widget .label.status-low,
+.gpu-widget .label.status-low,      .disk-widget .label.status-low      { color: var(--green); }
+.cpu-widget .label.status-medium,   .memory-widget .label.status-medium,
+.gpu-widget .label.status-medium,   .disk-widget .label.status-medium   { color: var(--yellow); }
+.cpu-widget .label.status-high,     .memory-widget .label.status-high,
+.gpu-widget .label.status-high,     .disk-widget .label.status-high     { color: var(--peach); }
+.cpu-widget .label.status-critical, .memory-widget .label.status-critical,
+.gpu-widget .label.status-critical, .disk-widget .label.status-critical { color: var(--red); }
+
+/* ---------- System-Popups ---------- */
+.cpu-popup, .memory-popup, .gpu-popup { min-width: 380px; padding: 12px 16px; }
+.cpu-popup .header .text, .memory-popup .header .text, .gpu-popup .header .text {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 6px 8px 10px;
+}
+.cpu-popup .stats, .memory-popup .stats, .gpu-popup .stats { padding: 8px; }
+.cpu-popup .stats .stat-label, .memory-popup .stats .stat-label, .gpu-popup .stats .stat-label {
+  font-size: 12px; font-weight: 500; color: var(--overlay1);
+}
+.cpu-popup .stats .stat-value, .memory-popup .stats .stat-value, .gpu-popup .stats .stat-value {
+  font-size: 20px; font-weight: 700;
+}
+.cpu-popup .cpu-graph       { color: var(--accent-bright); }
+.memory-popup .memory-graph { color: var(--accent-strong); }
+.gpu-popup .gpu-graph       { color: var(--lavender); }
+.cpu-popup .cpu-graph-grid, .memory-popup .memory-graph-grid, .gpu-popup .gpu-graph-grid { color: #ffffff0d; }
+
+/* ---------- Audio / Volume ---------- */
+.volume-widget .icon {
+  color: #FFFFFF;
+  font-size: 14px;
+  margin-right: 3px;
+  padding: 0 3px;
+}
+.volume-widget .label { font-weight: 500; }
+.volume-widget .label.muted, .volume-widget .icon.muted { color: var(--overlay0); }
+
+.audio-menu { min-width: 320px; padding: 12px 14px; }
+.audio-menu .system-volume-container .volume-slider { border: none; }
+.audio-menu .audio-container .device {
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.audio-menu .audio-container .device.selected { background-color: var(--accent-soft); }
+.audio-menu .audio-container .device:hover    { background-color: #ffffff12; }
+
+/* ---------- Bluetooth ---------- */
+.bluetooth-widget .icon { font-size: 15px; color: #FFFFFF; }
+
+/* ---------- Systray ---------- */
+.systray { background: transparent; border: none; }
+.systray .button { border-radius: 4px; padding: 2px; }
+.systray .button:hover { background: var(--accent-soft); }
+.systray .unpinned-visibility-btn { border-radius: 4px; height: 20px; width: 16px; }
+.systray .unpinned-visibility-btn:hover { background: #ffffff14; }
+.systray .label, .systray .icon { color: #FFFFFF; }
+
+/* ---------- Power-Menü ---------- */
+.power-menu-widget .label {
+  font-family: "JetBrainsMono NFP", monospace;
+  color: var(--red);
+  font-size: 14px;
+}
+.power-menu-overlay { background-color: #00000059; }
+.power-menu-overlay .uptime {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: var(--overlay2);
+  font-weight: 600;
+}
+.power-menu-popup {
+  background-color: #241C3BE6;   /* dunkles Violett statt neutralem Grau */
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+.power-menu-popup .profile-info {
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--border-soft);
+  margin-bottom: 14px;
+}
+.power-menu-popup .profile-info .profile-username { font-size: 20px; font-weight: 600; }
+.power-menu-popup .profile-info .profile-account-type { font-size: 12px; color: var(--overlay1); }
+.power-menu-popup .button {
+  padding: 0;
+  min-width: 130px; max-width: 130px;
+  min-height: 90px;
+  border-radius: 10px;
+  background-color: #ffffff0a;
+  border: 1px solid var(--border-soft);
+  margin: 6px;
+}
+.power-menu-popup .button.hover {
+  background-color: var(--accent-soft);
+  border-color: var(--lavender);
+}
+.power-menu-popup .button .label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--subtext1);
+  margin-bottom: 6px;
+}
+.power-menu-popup .button .icon {
+  font-family: "JetBrainsMono NFP", monospace;
+  font-size: 28px;
+  color: #ffffff40;
+  padding-top: 6px;
+}
+.power-menu-popup .button.hover .label,
+.power-menu-popup .button.hover .icon { color: var(--text); }
+.power-menu-popup .button.cancel .icon   { color: #F38BA880; }
+.power-menu-popup .button.cancel .label  { color: var(--red); }
+.power-menu-popup .button.shutdown .icon { color: var(--accent-strong); }
+.power-menu-popup .button.shutdown .label{ color: var(--accent-bright); }
