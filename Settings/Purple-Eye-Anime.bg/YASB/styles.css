@@ -7,7 +7,7 @@
 :root {
   /* Kern */
   --accent:        #583FA2;
-  --accent-glass:  #583FA23F;   /* Bar & Popup-Hintergrund */
+  --accent-glass:  #583FA20D;   /* Bar & Popup-Hintergrund */
   --accent-soft:   #583FA226;   /* Hover / Selection */
   --accent-strong: #7B5FD1;     /* hellere Akzent-Variante */
   --accent-bright: #A78BFA;     /* Icons / Highlights */
