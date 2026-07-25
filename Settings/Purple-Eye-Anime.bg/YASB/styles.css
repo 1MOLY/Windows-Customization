@@ -67,7 +67,7 @@
   padding: 2px 6px;
 }
 .widget .label {
-  padding: 0 3px;
+  padding: 0 4px;
   font-weight: 500;
 }
 .widget .icon {
@@ -256,7 +256,7 @@ QScrollBar::add-page, QScrollBar::sub-page { background: none; }
 
 /* ---------- Systray ---------- */
 .systray { background: transparent; border: none; }
-.systray .button { border-radius: 4px; padding: 2px; }
+.systray .button { border-radius: 4px; padding: 3px; }
 .systray .button:hover { background: var(--accent-soft); }
 .systray .unpinned-visibility-btn { border-radius: 4px; height: 20px; width: 16px; }
 .systray .unpinned-visibility-btn:hover { background: #ffffff14; }
